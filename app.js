@@ -168,13 +168,12 @@ app.delete('/article/:id', function (req, res) {
 
 //Contact route
 app.get('/contact', function (req, res) {
-  res.render('contact');
+  res.render('contact', {title: 'Contact'});
 });
 
 app.post('/send', function(req, res){
   const output = `
-  <p>New Contact REquest</p>
-  <h3>Xontact Details</h3>
+  <h3>Details</h3>
   <ul>
     <li>Name: ${req.body.name}</li>
     <li>Email: ${req.body.email}</li>
@@ -182,34 +181,34 @@ app.post('/send', function(req, res){
   </ul>
   <h3>Message: ${req.body.message}</h3>
   `;
-    let transporter = nodemailer.createTransport({
-      host: 'smtp.gmail.com',
-      port: 587,
-      secure: false, // true for 465, false for other ports
-      auth: {
-          user: process.env.MAILER_MAIL, // generated ethereal user
-          pass: process.env.MAILER_PW  // generated ethereal password
-      },
-      tls:{
-        rejectUnauthorized: false
-      }
-    });
-    let mailOptions = {
-        from: req.body.email, // sender address
-        to: 'sash.samson@gmail.com', // list of receivers
-        subject: 'Node Contact Request', // Subject line
-        text: 'Hello World', // plain text body
-        html: output // html body
-    };
-    transporter.sendMail(mailOptions, (error, info) => {
-      if (error) {
-        console.log(error);
-      } else {
-        console.log('Message Sent, with ID: ' + info.messageId);
-        console.log('Preview URL: ' + nodemailer.getTestMessageUrl(info));
-        res.render('contact', {msg: 'Message successfully sent!'})
-      }
-    });
+  let transporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 587,
+    secure: false, // true for 465, false for other ports
+    auth: {
+        user: process.env.MAILER_MAIL, // generated ethereal user
+        pass: process.env.MAILER_PW  // generated ethereal password
+    },
+    tls:{
+      rejectUnauthorized: false
+    }
+  });
+  let mailOptions = {
+      from: req.body.email, // sender address
+      to: 'sash.samson@gmail.com', // list of receivers
+      subject: 'Contact Form Submission', // Subject line
+      text: 'Hello World', // plain text body
+      html: output // html body
+  };
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('Message Sent, with ID: ' + info.messageId);
+      console.log('Preview URL: ' + nodemailer.getTestMessageUrl(info));
+      res.render('contact', {msg: 'Message successfully sent!'})
+    }
+  });
     // console.log(req.body);
 });
 
