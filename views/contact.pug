@@ -7,8 +7,12 @@ block content
     p.text-center Thank you, we will get back to you as soon as possible.
   else
     form(method='POST', action='/send')
-      input(placeholder='Name', type='text', value='', required='')
-      input(placeholder='Email address', type='email', onblur="this.setAttribute('value', this.value);", value='', required='')
-      .flex
-        textarea(placeholder='Message', rows='1', required='')
-      button Send
+      #form-group
+        input.form-control(placeholder='Name', type='text', value='', required='')
+      #form-group
+        input.form-control(placeholder='Email address', type='email', onblur="this.setAttribute('value', this.value);", value='', required='')
+        .flex
+      #form-group
+        textarea.form-control(placeholder='Message', rows='1', required='')
+      br
+      input.btn.btn-primary(type='submit',value='Submit')

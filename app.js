@@ -80,7 +80,7 @@ app.get('/', function (req, res) {
   Article.find({}, function (err, articles) {
     if (!err) {
       res.render('index', {
-        title: 'Entries',
+        title: 'Entries:',
         articles: articles
       });
     } else {
@@ -92,7 +92,7 @@ app.get('/', function (req, res) {
 //add route
 app.get('/articles/add', function (req ,res) {
   res.render('add_article', {
-    title: 'Add Entry'
+    title: 'Add Entry:'
   });
 });
 
@@ -168,7 +168,7 @@ app.delete('/article/:id', function (req, res) {
 
 //Contact route
 app.get('/contact', function (req, res) {
-  res.render('contact', {title: 'Contact'});
+  res.render('contact', {title: 'Contact:'});
 });
 
 app.post('/send', function(req, res){

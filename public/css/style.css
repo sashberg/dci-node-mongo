@@ -1,9 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,400,600,900');
+
+* {
+  font-family: 'Poppins', sans-serif;
+}
+
 .container {
   margin-top: 15vh;
 }
 
 .brand-logo {
   margin-left: 1vh!important;
+  font-weight: 600;
 }
 
 .ml-1vh {
@@ -19,4 +26,21 @@
 
 h1 {
   margin-top: 0;
+  font-weight: 600!important;
+  color: #e5e5e5;
+}
+
+footer {
+  font-size: .8rem;
+  font-weight: 200;
+  text-transform: uppercase;
+  letter-spacing: .1rem;
+  margin-top: 10vh;
+}
+
+textarea {
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 1px solid grey;
 }
